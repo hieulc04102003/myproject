@@ -1,0 +1,71 @@
+# ========================
+# .NET / ASP.NET Core
+# ========================
+**/bin/
+**/obj/
+*.user
+*.suo
+*.vs/
+.vs/
+**/.vs/
+*.log
+*.err
+run.log
+run.err
+api.log
+api.err.log
+
+# EF Core Tools
+**/.tools/
+
+# Publish output
+**/publish/
+**/out/
+
+# Rider / VS
+.idea/
+*.DotSettings.user
+
+# ========================
+# Node.js / Next.js
+# ========================
+node_modules/
+.next/
+.cache/
+dist/
+build/
+out/
+
+# Environment variables (chứa secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# npm / yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+
+# TypeScript incremental build
+*.tsbuildinfo
+next-env.d.ts
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Misc
+# ========================
+*.bak
+*.tmp
+tmp_*.csx
+check_*.csx
+check-*.ps1

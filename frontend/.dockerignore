@@ -1,0 +1,42 @@
+# Dependencies - we'll reinstall in Docker
+# node_modules - commented out to allow copying for some scenarios
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+.next
+dist
+build
+
+# Environment files
+.env*.local
+.env
+!.env.example
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+# Misc
+# *.md - keep README for debugging
+.git
+.gitignore
+
+# Testing
+coverage
+.nyc_output
+
+# TypeScript cache
+*.tsbuildinfo

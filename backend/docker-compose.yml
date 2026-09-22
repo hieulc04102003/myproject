@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: MyProject
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  web:
+    build:
+      context: .
+      dockerfile: src/ProductManagement.WebAPI/Dockerfile
+    depends_on:
+      - db
+    environment:
+      # Connection string for EF Core to use (db host is service name 'db')
+      ConnectionStrings__DefaultConnection: 'Host=db;Database=MyProject;Username=postgres;Password=postgrespw'
+      # JWT settings (override secret in production)
+      Jwt__Issuer: 'ProductManagementAPI'
+      Jwt__Audience: 'ProductManagementClient'
+      Jwt__Secret: 'ReplaceThisWithAReallyStrongSecretKey123!'
+      Jwt__ExpirationMinutes: '60'
+      # Run the app on container port 5000 so host and container use same port
+      ASPNETCORE_URLS: 'http://+:5000'
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - '5000:5000' # map host 5000 -> container 5000
+    restart: on-failure
+
+volumes:
+  pgdata:
